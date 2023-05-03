@@ -1,0 +1,56 @@
+{
+  "ontologies": [
+    {
+      "id": "go",
+      "reasoner": "EL"
+    },
+    {
+      "id": "mondo",
+      "reasoner": "EL"
+    },
+    {
+      "id": "oeo",
+      "preferredPrefix": "OEO",
+      "title": "Open Energy Ontology",
+      "description": "oeo",
+      "ontology_purl": "http://openenergy-platform.org/ontology/oeo/",
+      "repo": "https://github.com/OpenEnergyPlatform/ontology"
+    },
+    {
+      "id": "emo",
+      "preferredPrefix": "emo",
+      "title": "Electricity Markets Ontology",
+      "ontology_purl": "file:///opt/dataload/testcases/ontologies/emo.owl"
+    },
+    {
+      "id": "brick",
+      "preferredPrefix": "Brick",
+      "title": "BRICK",
+      "ontology_purl": "https://brickschema.org/schema/1.3/Brick"
+    },
+    {
+      "id": "cim",
+      "preferredPrefix": "CIM",
+      "title": "CIM Ontology",
+      "ontology_purl": "file:///opt/dataload/testcases/ontologies/TheCimOntology.owl"
+    },
+    {
+      "id": "sargon",
+      "preferredPrefix": "Sargon",
+      "title": "CIM Ontology",
+      "ontology_purl": "file:///opt/dataload/testcases/ontologies/Sargon.owl"
+    },
+    {
+      "id": "seas",
+      "preferredPrefix": "SEAS",
+      "title": "CIM Ontology",
+      "ontology_purl": "file:///opt/dataload/testcases/ontologies/seas-1.1.owl"
+    },
+    {
+      "id": "em-kpi",
+      "preferredPrefix": "EM-KPI",
+      "title": "CIM Ontology",
+      "ontology_purl": "file:///opt/dataload/testcases/ontologies/ontology.owl"
+    }
+  ]
+}

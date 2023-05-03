@@ -5,6 +5,7 @@ import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
+import FilterBox from "../../components/FilterBox";
 import { getStats } from "./homeSlice";
 
 export default function Home() {
@@ -27,7 +28,10 @@ export default function Home() {
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
               <div className="flex flex-nowrap gap-4 mb-4">
-                <SearchBox />
+                <SearchBox /> 
+              </div>
+              <div className="flex flex-nowrap gap-4 mb-4">
+                <FilterBox />
               </div>
               <div className="grid grid-cols-2">
                 <div className="text-neutral-black">

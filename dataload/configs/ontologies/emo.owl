@@ -1,0 +1,845 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY emo "http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:emo="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#aggregatedBy -->
+
+    <ObjectProperty rdf:about="&emo;aggregatedBy"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#aggregates -->
+
+    <ObjectProperty rdf:about="&emo;aggregates">
+        <inverseOf rdf:resource="&emo;aggregatedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#fromArea -->
+
+    <ObjectProperty rdf:about="&emo;fromArea"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasArea -->
+
+    <ObjectProperty rdf:about="&emo;hasArea"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasBilateralContract -->
+
+    <ObjectProperty rdf:about="&emo;hasBilateralContract"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasBuyer -->
+
+    <ObjectProperty rdf:about="&emo;hasBuyer">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasEndPeriod -->
+
+    <ObjectProperty rdf:about="&emo;hasEndPeriod">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasMarketType -->
+
+    <ObjectProperty rdf:about="&emo;hasMarketType"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasOffer -->
+
+    <ObjectProperty rdf:about="&emo;hasOffer"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasOperator -->
+
+    <ObjectProperty rdf:about="&emo;hasOperator"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasPeriod -->
+
+    <ObjectProperty rdf:about="&emo;hasPeriod">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasPower -->
+
+    <ObjectProperty rdf:about="&emo;hasPower">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasPrice -->
+
+    <ObjectProperty rdf:about="&emo;hasPrice">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasSeller -->
+
+    <ObjectProperty rdf:about="&emo;hasSeller">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasSession -->
+
+    <ObjectProperty rdf:about="&emo;hasSession">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#hasStartPeriod -->
+
+    <ObjectProperty rdf:about="&emo;hasStartPeriod">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#isOperatedBy -->
+
+    <ObjectProperty rdf:about="&emo;isOperatedBy"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#operates -->
+
+    <ObjectProperty rdf:about="&emo;operates">
+        <inverseOf rdf:resource="&emo;isOperatedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#placedByPlayer -->
+
+    <ObjectProperty rdf:about="&emo;placedByPlayer">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <inverseOf rdf:resource="&emo;placesBid"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#placedInPeriod -->
+
+    <ObjectProperty rdf:about="&emo;placedInPeriod"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#placedInSinglePeriod -->
+
+    <ObjectProperty rdf:about="&emo;placedInSinglePeriod">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&emo;placedInPeriod"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#placesBid -->
+
+    <ObjectProperty rdf:about="&emo;placesBid">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#cfpTime -->
+
+    <DatatypeProperty rdf:about="&emo;cfpTime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#date -->
+
+    <DatatypeProperty rdf:about="&emo;date">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#endDate -->
+
+    <DatatypeProperty rdf:about="&emo;endDate">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#id -->
+
+    <DatatypeProperty rdf:about="&emo;id">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#maxNumberOfFractions -->
+
+    <DatatypeProperty rdf:about="&emo;maxNumberOfFractions"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#maxNumberOfSessions -->
+
+    <DatatypeProperty rdf:about="&emo;maxNumberOfSessions"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#maxPrice -->
+
+    <DatatypeProperty rdf:about="&emo;maxPrice">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#minPrice -->
+
+    <DatatypeProperty rdf:about="&emo;minPrice">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#name -->
+
+    <DatatypeProperty rdf:about="&emo;name">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#number -->
+
+    <DatatypeProperty rdf:about="&emo;number">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#numberOfPeriods -->
+
+    <DatatypeProperty rdf:about="&emo;numberOfPeriods"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#startDate -->
+
+    <DatatypeProperty rdf:about="&emo;startDate">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#transactionType -->
+
+    <DatatypeProperty rdf:about="&emo;transactionType">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>buy</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>sell</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#unit -->
+
+    <DatatypeProperty rdf:about="&emo;unit">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#value -->
+
+    <DatatypeProperty rdf:about="&emo;value">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Aggregator -->
+
+    <Class rdf:about="&emo;Aggregator">
+        <rdfs:subClassOf rdf:resource="&emo;Player"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;aggregates"/>
+                <someValuesFrom rdf:resource="&emo;Player"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract electricity market Aggregator. An aggregator is a special type of Player which is aggregates small players in other for them to be able to participate in the wholesale electricity markets.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Area -->
+
+    <Class rdf:about="&emo;Area">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;name"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;maxPrice"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;minPrice"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an electricity market Area, such as Portugal or Spain areas in the Iberian market MIBEL.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Bid -->
+
+    <Class rdf:about="&emo;Bid">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;placedByPlayer"/>
+                <onClass rdf:resource="&emo;Player"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasOffer"/>
+                <someValuesFrom rdf:resource="&emo;Offer"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;transactionType"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange>
+                    <rdfs:Datatype>
+                        <oneOf>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>buy</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&rdf;List"/>
+                                        <rdf:first>sell</rdf:first>
+                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </oneOf>
+                    </rdfs:Datatype>
+                </onDataRange>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;id"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedLong"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an electricity market&apos;s abstract Bid.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#BilateralContract -->
+
+    <Class rdf:about="&emo;BilateralContract">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasPower"/>
+                <onClass rdf:resource="&emo;Power"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasPrice"/>
+                <onClass rdf:resource="&emo;Price"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasSeller"/>
+                <onClass rdf:resource="&emo;Player"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasEndPeriod"/>
+                <onClass rdf:resource="&emo;Period"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasStartPeriod"/>
+                <onClass rdf:resource="&emo;Period"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasBuyer"/>
+                <onClass rdf:resource="&emo;Player"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an electricity market&apos;s abstract Bilateral Contract.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Market -->
+
+    <Class rdf:about="&emo;Market">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasArea"/>
+                <someValuesFrom rdf:resource="&emo;Area"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;endDate"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;date"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;startDate"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;date"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasMarketType"/>
+                <someValuesFrom rdf:resource="&emo;MarketType"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasOperator"/>
+                <someValuesFrom rdf:resource="&emo;Operator"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;cfpTime"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;name"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract electricity Market, i.e. it may assume instances as MIBEL, EPEX or Nord Pool.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#MarketOperator -->
+
+    <Class rdf:about="&emo;MarketOperator">
+        <rdfs:subClassOf rdf:resource="&emo;Operator"/>
+        <disjointWith rdf:resource="&emo;SystemOperator"/>
+        <rdfs:comment xml:lang="en">This class represents an abstract Market Operator.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#MarketType -->
+
+    <Class rdf:about="&emo;MarketType">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;isOperatedBy"/>
+                <someValuesFrom rdf:resource="&emo;Operator"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;name"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;maxNumberOfSessions"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasSession"/>
+                <someValuesFrom rdf:resource="&emo;Session"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;id"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedLong"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract Market Type. E.g.: day-ahead, intraday, etc.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Offer -->
+
+    <Class rdf:about="&emo;Offer">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;id"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedLong"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasPower"/>
+                <onClass rdf:resource="&emo;Power"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasPrice"/>
+                <onClass rdf:resource="&emo;Price"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;number"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract Offer. An Offer here is seen as a bid&apos;s fraction, i.e. a bid may be defined by one or more fractions.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Operator -->
+
+    <Class rdf:about="&emo;Operator">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;name"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract electricity markets&apos; Operator.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Period -->
+
+    <Class rdf:about="&emo;Period">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;number"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;id"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedLong"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract electricity market Period. A period usually represents an hour, but it can be less depending on the market and market type to consider.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Player -->
+
+    <Class rdf:about="&emo;Player">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;fromArea"/>
+                <someValuesFrom rdf:resource="&emo;Area"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;name"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;placesBid"/>
+                <someValuesFrom rdf:resource="&emo;Bid"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class defines an electricity market abstract Player. A player may be a buyer, a seller, consumer, producer, retailler, aggregator, prosumer, amoung others.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Power -->
+
+    <Class rdf:about="&emo;Power">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;unit"/>
+                <cardinality rdf:datatype="&xsd;nonNegativeInteger">1</cardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;value"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract Power, defining it value and unit.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Price -->
+
+    <Class rdf:about="&emo;Price">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;unit"/>
+                <cardinality rdf:datatype="&xsd;nonNegativeInteger">1</cardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;value"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract Price, defining it value and unit.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Session -->
+
+    <Class rdf:about="&emo;Session">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;number"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;numberOfPeriods"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;maxNumberOfFractions"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;date"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;date"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;hasPeriod"/>
+                <someValuesFrom rdf:resource="&emo;Period"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&emo;id"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;unsignedLong"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an electricity market abstract Session. Each Market Type is composed of one or more market sessions.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#SystemOperator -->
+
+    <Class rdf:about="&emo;SystemOperator">
+        <rdfs:subClassOf rdf:resource="&emo;Operator"/>
+        <rdfs:comment xml:lang="en">This class represents an abstract System Operator.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&emo;Area"/>
+            <rdf:Description rdf:about="&emo;Bid"/>
+            <rdf:Description rdf:about="&emo;BilateralContract"/>
+            <rdf:Description rdf:about="&emo;Market"/>
+            <rdf:Description rdf:about="&emo;MarketType"/>
+            <rdf:Description rdf:about="&emo;Offer"/>
+            <rdf:Description rdf:about="&emo;Operator"/>
+            <rdf:Description rdf:about="&emo;Period"/>
+            <rdf:Description rdf:about="&emo;Player"/>
+            <rdf:Description rdf:about="&emo;Power"/>
+            <rdf:Description rdf:about="&emo;Price"/>
+            <rdf:Description rdf:about="&emo;Session"/>
+        </members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

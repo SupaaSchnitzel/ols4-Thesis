@@ -15,16 +15,51 @@ import SearchBox from "../../components/SearchBox";
 import Entity from "../../model/Entity";
 import { getSearchResults } from "./searchSlice";
 
+import {RootState} from "../../app/store"
+import { useSelector } from "react-redux";
+import {fetchAll, fetchFilter, fetchPossible} from "../../components/FilterSlice";
+
 export default function Search() {
   const params = useParams();
   let search: string = params.search as string;
-
+  //MINE
+  let possible = useSelector((state:RootState) => state.filter.data.possible);
+  possible = possible[0]
+  let all = useSelector((state:RootState) => state.filter.data.all);
+  let filter = useSelector((state:RootState) => state.filter.data.filter);
+  let isFilter = useSelector((state:RootState) => state.filter.isFilter);
+   
+  function score(name:String){
+    let score = 0;
+    for(var i in all.onts){
+      for(var key in Object.keys(all.onts[i])){        
+        if (  all.onts[i][Object.keys(all.onts[i])[key]] == name){
+          score = score + all.onts[i]['bp_score'];
+          score = score + all.onts[i]['pi_score'];
+          score = score + all.onts[i]['gov_score'];
+          score = score + all.onts[i]['ac_score'];
+          return(
+            
+              <span className="text-l font-bold inline-block py-1 px-2 uppercase rounded uppercase last:mr-0 mr-1">
+                Total Score: {score}
+              </span>
+            
+          )
+        }
+      }
+    }
+    return(<span className="text-l font-bold inline-block py-1 px-2 uppercase rounded uppercase last:mr-0 mr-1">
+    Total Score: Not available
+  </span>)
+  }
+  //END
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const loadingResults = useAppSelector(
     (state) => state.search.loadingSearchResults
   );
   const results = useAppSelector((state) => state.search.searchResults);
+  let results2 = orderResults()
   const totalResults = useAppSelector(
     (state) => state.search.totalSearchResults
   );
@@ -35,7 +70,6 @@ export default function Search() {
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const ontologyFacets =
@@ -43,6 +77,8 @@ export default function Search() {
   const [ontologyFacetSelected, setOntologyFacetSelected] = useState<string[]>(
     []
   );
+
+  
   const handleOntologyFacet = useCallback(
     (checked, key) => {
       let selected: string[] = ontologyFacetSelected;
@@ -77,6 +113,8 @@ export default function Search() {
     [typeFacetSelected, setTypeFacetSelected]
   );
 
+
+
   useEffect(() => {
     dispatch(
       getSearchResults({
@@ -107,6 +145,128 @@ export default function Search() {
       mounted.current = false;
     };
   });
+  useEffect(() =>{
+
+    dispatch(fetchPossible());
+    dispatch(fetchAll());
+  },[])
+
+  useEffect(()=>{
+    results2 = orderResults();
+  },[results, filter])
+  
+
+    {/* TODO::: CRITERIA FACETS */}
+  
+
+  
+
+
+    function Test() {
+      console.log('start TEST');
+      console.log(filter)
+      console.log(orderResults())
+      console.log('end TEST');
+    };
+    function handleForm(event){
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      dispatch(fetchFilter(form));
+  }
+  function options(key, possible) {
+    if(isFilter){
+      let formparams = localStorage.getItem('filter');
+      let jsonobj = formparams ? JSON.parse(formparams): {};
+      return (
+        <select defaultValue={jsonobj[key]?jsonobj[key]:'none'} id={key} name={key} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="none" disabled hidden>Select an Option</option>
+            {
+                possible && possible[key].map((index) =>{
+                    return (<option id={index} value={index}>{index}</option>);
+                })
+            };   
+        </select>
+      );
+    }else{
+      return (
+          <select defaultValue='none' id={key} name={key} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="none" disabled hidden>Select an Option</option>
+              {
+                  possible && possible[key].map((index) =>{
+                      return (<option id={index} value={index}>{index}</option>);
+                  })
+              };   
+          </select>
+        );
+      }
+    }
+
+    function getScore(name:string){
+      let score = 0;
+      for(var i in all.onts){
+        for(var key in Object.keys(all.onts[i])){        
+          if (  all.onts[i][Object.keys(all.onts[i])[key]] == name){
+            score = score + all.onts[i]['bp_score'];
+            score = score + all.onts[i]['pi_score'];
+            score = score + all.onts[i]['gov_score'];
+            score = score + all.onts[i]['ac_score'];
+            return score;
+          }
+        }
+      return score;
+      }
+      return 0;
+    }
+
+    function inFilter(entity, index, array){
+      return filter.onts.includes(entity.getOntologyId());
+    }
+
+    function notInFilter(entity, index, array){
+      return !filter.onts.includes(entity.getOntologyId());
+    }
+
+    function orderResults(){
+      let results2 = [...results];
+      results2.sort(
+        (a: Entity,b: Entity) => (getScore(a.getOntologyId()) > getScore(b.getOntologyId()) ? -1 : 1)
+      );
+      if(isFilter){
+        let inF, notInF;
+        inF = results2.filter(inFilter);
+        notInF = results2.filter(notInFilter);
+        results2 = inF.concat(notInF);
+        //Sresults2 = notInF.concat(inF);
+      }
+      
+      return results2;
+    }
+
+    function displaycriteria(){
+      
+        return(
+          <form id='CritForm' onChange={handleForm}>
+          <div className="w-full flex flex-wrap flex-row place-items-center">
+              {possible && Object.keys(possible).map((key)=>{
+                  if (key === 'license' || key === 'ont_languages'){
+                      return(
+                          <div className="col-span-2">
+                              <label id ={key}>{key}</label>
+                              {options(key,possible)}
+                          </div>
+                  )
+                  }else{
+                      return null;
+                  }
+          
+              })}
+          </div>
+      </form>)
+      
+
+    }
+    {/* TODO end::: CRITERIA FACETS */}
+
   return (
     <div>
       <Header section="home" />
@@ -178,10 +338,17 @@ export default function Search() {
                                 </span>
                               </label>
                             );
+                            
                           } else return null;
                         })
                       : null}
                   </fieldset>
+                  {/* TODO HERE ALL CRITERIA*, rewrite so that it maps criteria from object to right searchtype, write handleCriteriaFacet for onchange */ }
+                  <div className="font-semibold text-lg mb-2">Criteria</div>
+                  <fieldset>
+                    {displaycriteria()}
+                  </fieldset>
+                  {/* TODO End*/ }
                 </div>
               ) : null}
             </div>
@@ -222,7 +389,7 @@ export default function Search() {
                   dataCount={totalResults}
                   rowsPerPage={rowsPerPage}
                 />
-                {results.map((entity: Entity) => {
+                {results2.map((entity: Entity) => {
                   return (
                     <div key={randomString()} className="my-4">
                       <div className="mb-1 leading-loose truncate">
@@ -262,6 +429,7 @@ export default function Search() {
                             {entity.getOntologyId()}
                           </span>
                         </Link>
+                        {score(entity.getOntologyId())}
                       </div>
                     </div>
                   );
