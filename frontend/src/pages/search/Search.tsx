@@ -22,14 +22,27 @@ import {fetchAll, fetchFilter, fetchPossible} from "../../components/FilterSlice
 export default function Search() {
   const params = useParams();
   let search: string = params.search as string;
-  //MINE
+  //Start of modified Code
+  // Possible criteria values from state
   let possible = useSelector((state:RootState) => state.filter.data.possible);
   possible = possible[0]
+  // Al ontology values from state
   let all = useSelector((state:RootState) => state.filter.data.all);
+  // Filter values from state
   let filter = useSelector((state:RootState) => state.filter.data.filter);
   let isFilter = useSelector((state:RootState) => state.filter.isFilter);
    
   function score(name:String){
+    /**
+   * Html of the ontology score of the given ontology name
+   *
+   * 
+   * @param name The ontologies name
+   *
+   * @returns HTML Span of the ontologies accumulated score
+   *
+   * 
+   */
     let score = 0;
     for(var i in all.onts){
       for(var key in Object.keys(all.onts[i])){        
@@ -52,7 +65,7 @@ export default function Search() {
     Total Score: Not available
   </span>)
   }
-  //END
+  ////End of modified Code
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const loadingResults = useAppSelector(
@@ -66,7 +79,6 @@ export default function Search() {
   const facets = useAppSelector((state) => state.search.facets);
   const prevSearch = usePrevious(search);
 
-  //   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
@@ -145,35 +157,50 @@ export default function Search() {
       mounted.current = false;
     };
   });
+  //Start of modified Code
   useEffect(() =>{
+    /**
+   * Fetches the possible Ontology criteria values and the ontologies on load.
+   *
+   * 
+   */
 
     dispatch(fetchPossible());
     dispatch(fetchAll());
   },[])
 
   useEffect(()=>{
+    /**
+   * Orders the displayed results based on changes in the results or the filter values.
+   * 
+   */
     results2 = orderResults();
   },[results, filter])
-  
-
-    {/* TODO::: CRITERIA FACETS */}
-  
-
-  
-
-
-    function Test() {
-      console.log('start TEST');
-      console.log(filter)
-      console.log(orderResults())
-      console.log('end TEST');
-    };
-    function handleForm(event){
-      event.preventDefault();
-      const form = new FormData(event.currentTarget);
-      dispatch(fetchFilter(form));
+ 
+  function handleForm(event){
+    /**
+        * Keeps track of changes in the form data and dispatches API requests through fetchFilter based on the current values.
+        *
+        *
+        * @param event - The event that triggers the function
+        *
+        * 
+        */
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    dispatch(fetchFilter(form));
   }
   function options(key, possible) {
+    /**
+        * Builds the select for the given criteria key, if a filter is already set then the defaultValue is set accordingly.
+        *
+        *
+        * @param key - The criteria for the select
+        * @param possible - All possible values the criteria key can take.
+        * @returns Select html for a criteria key.
+        *
+        * 
+        */
     if(isFilter){
       let formparams = localStorage.getItem('filter');
       let jsonobj = formparams ? JSON.parse(formparams): {};
@@ -202,6 +229,16 @@ export default function Search() {
     }
 
     function getScore(name:string){
+      /**
+      * Computes the ontologies accumulated score of the given ontology name
+      *
+      * 
+      * @param name The ontologies name
+      *
+      * @returns the score
+      *
+      *   
+      */
       let score = 0;
       for(var i in all.onts){
         for(var key in Object.keys(all.onts[i])){        
@@ -219,14 +256,44 @@ export default function Search() {
     }
 
     function inFilter(entity, index, array){
+      /**
+      * Helper function that checks if an ontology(entity) is in the filter
+      *
+      * @param entity The ontology entity
+      * @param index The ontology entity index not used
+      * @param array The array it is in not used
+      * 
+      * @returns Boolean
+      *
+      *   
+      */
       return filter.onts.includes(entity.getOntologyId());
     }
 
     function notInFilter(entity, index, array){
+      /**
+      * Helper function that checks if an ontology(entity) is not in the filter
+      *
+      * 
+      * @param entity The ontology entity
+      * @param index The ontology entity index not used
+      * @param array The array it is in not used
+      *
+      * @returns Boolean
+      *
+      *   
+      */
       return !filter.onts.includes(entity.getOntologyId());
     }
 
     function orderResults(){
+      /**
+      * Orders the given results according to a filter if set, if not according to the accumulated score
+      *
+      * @returns the ordered results list
+      *
+      *   
+      */
       let results2 = [...results];
       results2.sort(
         (a: Entity,b: Entity) => (getScore(a.getOntologyId()) > getScore(b.getOntologyId()) ? -1 : 1)
@@ -243,6 +310,15 @@ export default function Search() {
     }
 
     function displaycriteria(){
+      /**
+      * Outputs the criteria form html to displayed on the sidebar
+      *
+      * 
+      *
+      * @returns html for the criteria form
+      *
+      *   
+      */
       
         return(
           <form id='CritForm' onChange={handleForm}>
@@ -265,7 +341,7 @@ export default function Search() {
       
 
     }
-    {/* TODO end::: CRITERIA FACETS */}
+    //End of modified Code
 
   return (
     <div>
@@ -343,12 +419,12 @@ export default function Search() {
                         })
                       : null}
                   </fieldset>
-                  {/* TODO HERE ALL CRITERIA*, rewrite so that it maps criteria from object to right searchtype, write handleCriteriaFacet for onchange */ }
+                  {/* Added  Criteria Searchbox, not done with Filterbox because of the Button */ }
                   <div className="font-semibold text-lg mb-2">Criteria</div>
                   <fieldset>
                     {displaycriteria()}
                   </fieldset>
-                  {/* TODO End*/ }
+                  {/* End of modified code*/ }
                 </div>
               ) : null}
             </div>
@@ -429,6 +505,7 @@ export default function Search() {
                             {entity.getOntologyId()}
                           </span>
                         </Link>
+                        {/* Added Ontology Score per Result */}
                         {score(entity.getOntologyId())}
                       </div>
                     </div>

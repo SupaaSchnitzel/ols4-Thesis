@@ -31,6 +31,7 @@ export default function Home() {
                 <SearchBox /> 
               </div>
               <div className="flex flex-nowrap gap-4 mb-4">
+                {/* Added Filterbox Fragment*/}
                 <FilterBox />
               </div>
               <div className="grid grid-cols-2">

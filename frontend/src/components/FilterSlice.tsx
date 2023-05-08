@@ -1,6 +1,17 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const fetchFilter = createAsyncThunk('filter/fetchFilter', async (formdata:FormData) => {
+    /**
+   * Returns the names of the ontologies that fit the filter requirements from the form data.
+   *
+   * @remarks
+   * This method is fetching data from the OntMetaDatabase API.
+   *
+   * @param formdata - The formdata that keeps track of the ontology criteria
+   * @returns The json returned by the API
+   *
+   * 
+   */
     let url ='http://localhost:5000/names?';
     var object = {};
     formdata.forEach((value, key) => 
@@ -16,18 +27,38 @@ export const fetchFilter = createAsyncThunk('filter/fetchFilter', async (formdat
 })
 
 export const fetchPossible = createAsyncThunk('filter/fetchPossible', async () => {
+     /**
+   * Returns the Possible criteria options of the ontologies.
+   *
+   * @remarks
+   * This method is fetching data from the OntMetaDatabase API.
+   *
+   * @returns The json returned by the API
+   *
+   * 
+   */
     let url ='http://localhost:5000/possible';
     let response = await fetch(url);
     return response.json();
 })
 export const fetchAll = createAsyncThunk('filter/fetchAll', async () => {
+     /**
+   * Returns the full ontology metadata of the ontologies that fit the filter requirements from the form data.
+   *
+   * @remarks
+   * This method is fetching data from the OntMetaDatabase API.
+   *
+   * @returns The json returned by the API
+   *
+   * 
+   */
     let url ='http://localhost:5000/ont';
     let response = await fetch(url);
     return response.json();
 })
 
 
-
+// The Filterslice that is the reducer for the filter functionality.
 const filterSlice = createSlice({
     name:"filter",
     initialState: {

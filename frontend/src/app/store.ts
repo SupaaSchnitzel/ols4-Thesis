@@ -8,6 +8,7 @@ export const store = configureStore({
     home: homeReducer,
     search: searchReducer,
     ontologies: ontologiesReducer,
+    // Added reducer for the filter functionality
     filter: filterReducer,
     
   },
