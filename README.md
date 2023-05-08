@@ -1,11 +1,12 @@
 
-<a href="https://github.com/EBISPOT/ols4/actions/workflows/test.yml"><img src="https://github.com/EBISPOT/ols4/actions/workflows/test.yml/badge.svg"/></a>
 
-OLS4 is available at <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</b>. Please report any issues to the tracker in this repository.
+OLS4 is available at <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</b>. Please report any issues to the tracker in the following repository <b>[https://github.com/EBISPOT/ols4] (https://github.com/EBISPOT/ols4)</b>.
 
 ---
 
-Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
+Version 4 of the EMBL-EBI Ontology Lookup Service (OLS) modified to showcase the API featured in <b>[https://github.com/SupaaSchnitzel/OntMetaDatabase](https://github.com/SupaaSchnitzel/OntMetaDatabase)</b>. It is an exemplary implementation and not production ready, so far the filtering is fully done in the frontend, for a full release some functionality should be done in the backend. Modified code only in frontend, is labeled with comments.
+
+featuring:
 
 * Much faster dataload (loads the OBO foundry in hours instead of days)
 * Modular dataload pipeline with decoupled, individually testable stages
@@ -21,6 +22,12 @@ This repository contains three projects:
 * The dataloader (`dataload` directory)
 * The API server (`backend` directory)
 * The React frontend (`frontend` directory)
+
+# Added Features
+
+* Search results of each page ordered by criteria or by accumulated score
+
+* Refined search by ontology criterias
 
 # Deploying OLS4
 
